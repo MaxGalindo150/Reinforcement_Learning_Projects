@@ -9,9 +9,9 @@ class Gato:
         self.computer_symbol = "X"
         self.policy = {}
         if agent == "ValueIteration":
-            path = "Policies/valueIterationGato.json"
+            path = "ValuePolicy_Iteration/Policies/valueIterationGato.json"
         elif agent == "PolicyIteration":
-            path = "Policies/policyIterationGato.json"
+            path = "ValuePolicy_Iteration/Policies/policyIterationGato.json"
         with open(path, 'r') as json_file:
             self.policy = json.load(json_file)
 
@@ -63,15 +63,16 @@ class Gato:
             if self.verificar_ganador():
                 break
             elif 0 not in self.board:
-                print("Es un empate!")
                 break
             turno = (turno + 1) % 2
         print("&"*20)
         self.imprimir_tablero()
-        if turno == 0:
-            print(f"El RL ha ganado!")
-        else:
-            print(f"El jugador aleatorio ganado!")
+        if 0 not in self.board:
+            print("Empate!")
+        elif turno == 1:
+            print("El jugador aleatorio ganado!")
+        elif turno == 0:
+            print("El RL ha ganado!")
 
 if __name__ == "__main__":
     game = Gato("ValueIteration")
