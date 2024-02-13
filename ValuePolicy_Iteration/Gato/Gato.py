@@ -9,9 +9,9 @@ class Gato:
         self.computer_symbol = "X"
         self.policy = {}
         if agent == "ValueIteration":
-            path = "ValuePolicy_Iteration/Policies/valueIterationGato.json"
+            path = "ValuePolicy_Iteration/Policies/ValueIteration_POLICY_TTT.json"
         elif agent == "PolicyIteration":
-            path = "ValuePolicy_Iteration/Policies/policyIterationGato.json"
+            path = "ValuePolicy_Iteration/Policies/PolicyIteration_POLICY_TTT.json"
         with open(path, 'r') as json_file:
             self.policy = json.load(json_file)
 
@@ -75,5 +75,5 @@ class Gato:
             print("El RL ha ganado!")
 
 if __name__ == "__main__":
-    game = Gato("ValueIteration")
+    game = Gato("PolicyIteration")
     game.start_game()
